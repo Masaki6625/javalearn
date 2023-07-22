@@ -1,8 +1,31 @@
 public class Main {
   //int hp;  これでは誰かが値を変更できてしまうなので
   private int hp;  //とすると変更できなくなる
-  String name;
+  private String name;
   Sword sword;
+  
+  //キングから勇者の名前にアクセスできるようになる。
+  //getがついているためgetter(ゲッター)メソッド
+  public String getName() {
+    return this.name;
+  }
+  
+  //setを使っているのでsetter(セッター)メソッド
+  public  void setName(String name) {
+    if (name == null) {
+      throw new IllegalArgumentException
+        ("名前がnullである。処理を中断");
+    }
+    if (name.length() <= 1) {
+      throw new IllegalArgumentException
+        ("名前が短すぎる。処理を中断");
+    }
+    if (name.length() >= 8) {
+      throw new IllegalArgumentException
+        ("名前が長すぎる。処理を中断");
+    }
+    this.name = name;
+  }
   
   public void bye() {
     System.out.println("勇者は別れを告げた");
