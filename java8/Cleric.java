@@ -3,9 +3,9 @@ import java.util.*; //お手本に書いてあった
 public class Cleric {
   String name;
   int hp = 50;
-  final int MAXHP = 50; //お手本ではMAX_HPのみたいにスネークになってた
+  static final int MAXHP = 50; //お手本ではMAX_HPのみたいにスネークになってた
   int mp = 50;
-  final int MAXMP = 50; //HPと同様MAX_MP
+  static final int MAXMP = 50; //HPと同様MAX_MP
 
   public void selfAid() {
     System.out.println(this.name + "は、セルフエイドを唱えた！");

@@ -2,6 +2,7 @@ public class Hero {
   //フィールドはオーバーライドしてはいけない。親クラスと子クラスで同名のフィールドがあると誤った動作をする可能性があるため。
   String name = "ミナト";
   int hp = 100;
+  static int money;  //staticをつけることで「すべての勇者で１つ」と設定することができる
   public Hero() {
     System.out.println("Heroのコンストラクタが動作");
   }
@@ -31,5 +32,10 @@ public class Hero {
       }
     }
     return false;
+  }
+  
+  //勇者の所持金をランダムに設定する
+  public static void setRandomMoney() {
+    Hero.money = (int)(Math.random() * 1000);
   }
 }
