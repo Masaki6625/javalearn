@@ -1,3 +1,7 @@
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Main {
   public static void main(String[] args) {
     //文字の長さや等しいかを検索するメソッド等
@@ -62,5 +66,38 @@ public class Main {
     // String s8 = String.format
     //   (FORMAT, hero.getName(), hero.getJob(), hero.getGold());
     // System.out.println(s8);
+    
+    //処理にかかった時間を取得するメソッド
+    long start = System.currentTimeMillis();
+    long end = System.currentTimeMillis();
+    System.out.println("処理にかかった時間は、" + (end - start) + "ミリ秒でした");
+    
+    //日付を取得するメソッド
+    Date now = new Date();
+    System.out.println(now);
+    System.out.println(now.getTime());
+    Date past = new Date(1600705425827L);
+    System.out.println(past);
+    
+    //カレンダー機能
+    Calendar c = Calendar.getInstance();
+    c.set(2019,8,23,1,23,45);
+    c.set(Calendar.MONTH, 9);
+    Date d = c.getTime();
+    System.out.println(d);
+    Date now1 = new Date();
+    c.setTime(now1);
+    int y = c.get(Calendar.YEAR);
+    System.out.println("今年は" + y + "年です");
+    
+    //String型とDate型の相互変換
+    
+    SimpleDateFormat f = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    
+    Date d1 = f.parse("2020/09/22 01:23:45");
+    System.out.println(d1);
+    Date now2 = new Date();
+    String s15 = f.format(now2);
+    System.out.println("現在は" + s15 + "です");
   }
 }
