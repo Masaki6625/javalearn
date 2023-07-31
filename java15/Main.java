@@ -1,5 +1,7 @@
 import java.util.Calendar;
 import java.text.SimpleDateFormat;
+import java.time.*;
+import java.time.format.*;
 import java.util.Date;
 
 public class Main {
@@ -92,14 +94,61 @@ public class Main {
     
     //String型とDate型の相互変換
     
-    SimpleDateFormat f = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    // SimpleDateFormat f = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
     
-    Date d1 = f.parse("2020/09/22 01:23:45");
-    System.out.println(d1);
-    Date now2 = new Date();
-    String s15 = f.format(now2);
-    System.out.println("現在は" + s15 + "です");
+    // Date d1 = f.parse("2020/09/22 01:23:45");
+    // System.out.println(d1);
+    // Date now2 = new Date();
+    // String s15 = f.format(now2);
+    // System.out.println("現在は" + s15 + "です");
+    
+    //Instantの生成
+    Instant i1 = Instant.now();
+    //Instantとlongの相互変換
+    Instant i2 = Instant.ofEpochMilli(1600705425827L);
+    long l = i2.toEpochMilli();
+    
+    //ZonedDateTimeの生成
+    ZonedDateTime z1 = ZonedDateTime.now();
+    ZonedDateTime z2 = ZonedDateTime.of(2020, 1, 2, 3, 4, 5, 6, ZoneId.of("Asia/Tokyo"));
+    
+    //InstantとZonedDateTimeの相互変換
+    Instant i3 = z2.toInstant();
+    ZonedDateTime z3 = i3.atZone(ZoneId.of("Europe/London"));
+    
+    //ZoneDateTimeの利用方法
+    System.out.println("東京" + z2.getYear() + z2.getMonth() + z2.getDayOfMonth());
+    System.out.println("ロンドン" + z3.getYear() + z3.getMonth() + z3.getDayOfMonth());
+    
+    if (z2.isEqual(z3)) {
+      System.out.println("これらは同じ瞬間を指しています");
+    }
+    
+    DateTimeFormatter fmt = DateTimeFormattr.ofPattern("yyyy/MM/dd");
+    LocalDate ldate = LocalDate.parse("2020/09/22", fmt);
+    
+    //1000日後を計算する
+    LocalDate ldatep = ldate.plusDays(1000);
+    String str = ldatep.format(fmt);
+    System.out.println("1000日後は" + str);
+    
+    //現在日付との比較
+    LocalDate now = LocalDate.now();
+    if (now.isAfter(ldatep)) {
+      System.out.println("1000日後は過去日付です");
+    }
+    
+    LocalDate d1 = LocalDate.of(2020,1,1);
+    LocalDate d2 = LocalDate.of(2020,1,4);
+    
+    //3日間を表すperiodを2通りの方法で生成
+    Period p1 = Period.ofDays(3);
+    Period p2 = Period.between(d1, d2);
+    
+    //d2のさらに3日後を計算する
+    LocalDate d3 = d2.plus(p2);
   }
 }
 
-//
+// 7/30
+//progateでjavascriptの学習を行いました。
