@@ -6,5 +6,12 @@ public class Main {
     
     Tubaki t1 = new Tubaki();
     t1.attack(3);
+    
+    Tukino tu1 = new Tukino();
+    tu1.magic();
+    
+    Chachamaru cha = new Chachamaru();
+    cha.ruby();
+    System.out.println(cha.know);
   }
 }
